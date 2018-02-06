@@ -19,10 +19,12 @@ function loadUrl(url) {
 
 function analyzeSite() {
   //validate url
+
   if (websiteInput.value != "") {
     let url = "https://culture-ie.herokuapp.com/basic_scraper.json?site=" + encodeURI(websiteInput.value);
     scrapeSite(url);
     crawlResult.innerHTML = "Analyzing..."
+    goBtn.classList.add('is-loading');
   } else {
     crawlResult.innerHTML = "Please enter a URL or the name of an arts organization."
   }
@@ -58,6 +60,8 @@ function scrapeSite(url) {
         crawlDebug.innerHTML += "<p> Facebook:" + jsonResp.data.my_facebook_id + "</p>";
         crawlResult.innerHTML += "<p> Searching for events...</p>";
 
+        goBtn.classList.remove('is-loading');
+
         fbid = jsonResp.data.my_facebook_id;
         if (fbid != "") {
           loadFacebookEvents(jsonResp.data.my_facebook_id);
@@ -77,12 +81,14 @@ function scrapeSite(url) {
 
           }
         }
+        goBtn.classList.remove('is-loading');
       }
 
     })
     .catch(function(error) {
         crawlResult.HTML = "<pre>Error: " + error + "</pre>";
     });
+
 }
 
 

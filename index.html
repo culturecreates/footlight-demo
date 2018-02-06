@@ -18,7 +18,33 @@
 
 <body>
 
-  <section class="hero">
+  <nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
+    <a class="navbar-item">
+    FOOTLIGHT
+    </a>
+    <div class="navbar-item">
+      <a class="navbar-link">
+        Test Drive
+      </a>
+    </div>
+    <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-link">
+        Knowledge Graph
+      </a>
+      <div class="navbar-dropdown is-boxed">
+        <a class="navbar-item">
+          Montreal Events
+        </a>
+        <hr class="navbar-divider">
+        <div class="navbar-item">
+          Version 0.9.1
+        </div>
+      </div>
+    </div>
+  </nav>
+
+
+  <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -37,10 +63,10 @@
 
         <div class="field has-addons">
           <div class="control">
-            <input  class="input" id="website-input" type="text"  placeholder="Website">
+            <input  class="input is-large" id="website-input" type="text"  placeholder="Website">
           </div>
           <div class="control">
-            <button id="go-btn" class="button is-info" type="button">Start</button>
+            <button id="go-btn" class="button is-info is-large" type="button">Start</button>
           </div>
         </div>
 
@@ -49,16 +75,31 @@
           <div id="crawl-result">
           </div>
         </div>
-        <div class="column">
-          <pre>
-            <div id="crawl-debug">
-              Trace Window
-            </div>
-          </pre>
-        </div>
+
       </div>
     </div>
   </section>
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Footligh Technology</strong> by <a href="http://culturecreates.com">Culture Creates Inc.</a>. The source code is licensed
+          <a href="LICENSE.md">MIT</a>. The website content
+          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="column">
+      <pre>
+        <div id="crawl-debug">
+          Trace Window
+        </div>
+      </pre>
+    </div>
+  </footer>
+
+
 
   <script  src="project.js"></script>
 
