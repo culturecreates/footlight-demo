@@ -5,6 +5,8 @@ const crawlDebug = document.getElementById('crawl-debug');
 const goBtn = document.getElementById('go-btn');
 const websiteInput = document.getElementById("website-input");
 
+
+
 goBtn.addEventListener("click",analyzeSite);
 
 websiteInput.addEventListener("keyup", function(event) {
@@ -21,7 +23,7 @@ function loadUrl(url) {
 function analyzeSite() {
   //validate url
   if (websiteInput.value != "") {
-    let url = "http://culture-ie.herokuapp.com/basic_scraper.json?site=" + encodeURI(websiteInput.value);
+    let url = "https://culture-ie.herokuapp.com/basic_scraper.json?site=" + encodeURI(websiteInput.value);
     scrapeSite(url);
     crawlResult.innerHTML = "Analyzing..."
   } else {
@@ -88,7 +90,7 @@ function scrapeSite(url) {
 
 
 function loadFacebookEvents(fbid) {
-  let url = "http://culture-ie.herokuapp.com/facebook.json?fbid=" + encodeURI(fbid);
+  let url = "https://culture-ie.herokuapp.com/facebook.json?fbid=" + encodeURI(fbid);
 
   fetch(url)
     .then((resp) => resp.json())
