@@ -1,14 +1,11 @@
 
 const crawlResult = document.getElementById('crawl-result');
 const crawlDebug = document.getElementById('crawl-debug');
-
 const goBtn = document.getElementById('go-btn');
 const websiteInput = document.getElementById("website-input");
 
 
-
 goBtn.addEventListener("click",analyzeSite);
-
 websiteInput.addEventListener("keyup", function(event) {
   event.preventDefault();
   if (event.keyCode === 13) {
