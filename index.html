@@ -1,0 +1,67 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Footlight Technology Demo</title>
+     <meta name="description" content="Footlight Technology Demo">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+       <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+ </head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Footlight Technology
+        </h1>
+        <p class="subtitle">
+          Event  <strong>find-ability</strong> for the arts sector!
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+
+        <div class="field has-addons">
+          <div class="control">
+            <input  class="input" id="website-input" type="text"  placeholder="Website">
+          </div>
+          <div class="control">
+            <button id="go-btn" class="button is-info" type="button">Start</button>
+          </div>
+        </div>
+
+      <div class="columns">
+        <div class="column">
+          <div id="crawl-result">
+          </div>
+        </div>
+        <div class="column">
+          <pre>
+            <div id="crawl-debug">
+              Trace Window
+            </div>
+          </pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script  src="project.js"></script>
+
+ </body>
+
+ </html>
