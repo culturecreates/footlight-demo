@@ -61,10 +61,11 @@ function analyzeSite() {
 
     setTimeout(function () {
      hero.style.display = "none";
+     document.body.scrollTop = 0;
 
    }, 2000);
     hero.style.opacity = 0;
-    document.body.scrollTop = 0;
+
 
   } else {
     crawlResult.innerHTML = preNote + "Please enter the name or URL of an arts organization." + postNote
