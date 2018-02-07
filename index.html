@@ -17,52 +17,55 @@
  </head>
 
 <body>
+  <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
 
-  <nav class="navbar is-transparent" role="navigation" aria-label="dropdown navigation">
-
+      <div class="navbar-item">
+        <img src="images/footlight-logo.png">
+      </div>
       <button class="button navbar-burger"  data-target="navMenu">
-        <span>One</span>
-        <span>Two</span>
-        <span>Three</span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
-
+    </div>
     <div class="navbar-menu">
-      <!-- navbar start, navbar end -->
-      <div class="navbar-item">
-        FOOTLIGHT
-      </div>
-      <div class="navbar-item">
-        <a class="navbar-link">
-          Test Drive
-        </a>
-      </div>
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          Knowledge Graph
-        </a>
-        <div class="navbar-dropdown is-boxed">
-          <a class="navbar-item">
-            Montreal Events
+      <div class="navbar-start">
+        <!-- navbar items -->
+        <div class="navbar-item">
+          <a class="navbar-link">
+            Test Drive
           </a>
-          <hr class="navbar-divider">
-          <div class="navbar-item">
-            Version 0.9.1
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Knowledge Graph
+          </a>
+          <div class="navbar-dropdown is-boxed">
+            <a class="navbar-item">
+              Montreal Events
+            </a>
+            <hr class="navbar-divider">
+            <div class="navbar-item">
+              Version 0.9.1
+            </div>
           </div>
         </div>
       </div>
-
+      <div class="navbar-end">
+        <!-- navbar items -->
+      </div>
     </div>
   </nav>
-
 
   <section class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
-          Footlight Technology
+          How people find things on the Web is changing.
         </h1>
         <p class="subtitle">
-          Event  <strong>find-ability</strong> for the arts sector!
+          Check the  <strong>find-ability</strong> rating of arts events on a website.
         </p>
       </div>
     </div>
@@ -73,12 +76,13 @@
     <div class="container">
 
         <div class="field has-addons">
-          <div class="control">
-            <input  class="input is-large" id="website-input" type="text"  placeholder="Website">
+          <div class="control is-expanded">
+            <input  class="input is-large" id="website-input" type="text" placeholder="Website">
           </div>
           <div class="control">
             <button id="go-btn" class="button is-info is-large" type="button">Start</button>
           </div>
+
         </div>
 
       <div class="columns">
@@ -101,16 +105,13 @@
       </div>
     </div>
 
-    <div class="column">
+    <div class="column" style="border: 2px dashed red;">
       <pre>
         <div id="crawl-debug">
-          Trace Window
         </div>
       </pre>
     </div>
   </footer>
-
-
 
   <script  src="project.js"></script>
 
