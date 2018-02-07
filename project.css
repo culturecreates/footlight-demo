@@ -14,15 +14,14 @@
 }
 
 @keyframes fadeOut {
-  0% { opacity:0; display: block; }
+  0% { opacity:0; }
   10%  { opacity:1;}
   90%  { opacity:1;}
- 100% {}
+ 100% { opacity:0; }
 }
 
 
 .fade-out {
- opacity:0;  /* make things invisible upon start */
  animation:fadeOut ease-in forwards 5s;
  }
 

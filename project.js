@@ -60,10 +60,11 @@ function analyzeSite() {
     goBtn.classList.add('is-loading');
 
     setTimeout(function () {
-     hero.style.display = "none";
-     document.body.scrollTop = 0;
-
-   }, 2000);
+      hero.style.display = "none";
+      setTimeout(function () {
+        document.body.scrollTop = 0;
+      }, 100);
+    }, 2000);
     hero.style.opacity = 0;
 
 
