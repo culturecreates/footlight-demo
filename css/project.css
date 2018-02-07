@@ -1,0 +1,19 @@
+.chat-card {
+  display: block;
+}
+
+
+#hero {
+   transition: all 1s linear;
+}
+
+@keyframes fadeOut {
+  0% { opacity:0; }
+  10%  { opacity:1;}
+  90%  { opacity:1;}
+ 100% { opacity:0; }
+}
+
+.fade-out {
+ animation:fadeOut ease-in forwards 5s;
+ }

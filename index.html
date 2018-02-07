@@ -10,7 +10,7 @@
      <title>Footlight Technology Demo</title>
      <meta name="description" content="Footlight Technology Demo">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-     <link rel="stylesheet" href="project.css">
+     <link rel="stylesheet" href="css/project.css">
 
      <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
        <!--[if lt IE 9]>
@@ -87,14 +87,14 @@
       </div>
 
       <div class="content">
-
           <div id="crawl-result">
           </div>
-
-
       </div>
     </div>
   </section>
+
+
+
   <footer class="footer">
     <div class="container">
       <div class="content has-text-centered">
@@ -114,8 +114,69 @@
     </div>
   </footer>
 
-  <script  src="project.js"></script>
 
+  <!-- SECTION FOR CHAT CARDS -->
+
+  <section id="validate-site-card" class="section chat-card" >
+    <div class="container">
+      <div class="content">
+        <article class="notification is-warning">
+          <div class="columns">
+            <div class="column is-one-quarter">
+              <figure class="image is-4by3">
+                <img src="https://bulma.io/images/placeholders/640x480.png">
+              </figure>
+            </div>
+            <div class="column">
+              <p class="title">Is this the site?</p>
+              <p id="site-name-check" class="subtitle">http://culturecreates.com</p>
+              <button id="site-check-ok" onclick="scrapeSite(compose_scraper_url(document.getElementById('site-name-check').innerText))" class="button is-large">Yes</button>
+              <button id="site-check-ok" onclick="document.location.reload(true);  document.body.scrollTop = 0;" class="button is-large">No</button>
+            </div>
+          </div>
+
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote-bot-1" class="secion chat-card">
+    <div class="container">
+      <div class="content">
+        <blockquote>
+          <div style="float:left" >
+            <span class="icon has-text-info is-large">
+              <i class="fas fa-2x fa-info-circle"></i>
+            </span>
+          </div>
+          <div>
+            <p>Food for thought: Did you know that more than 50% of visitors to websites are bots and not humans beings. And the ratio of bots versus people on websites that have less traffic can reach as high as 90%.
+            </p>
+          </div>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="rate-site-card" class="section chat-card" >
+    <div class="container">
+      <div class="content">
+        <article class="notification is-principle">
+          <p class="title">Site Rating</p>
+          <p id="site-name-check" class="subtitle">Top tile</p>
+
+          <button class="button is-large">Yes</button>
+          <button class="button is-large"> No</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <script  src="js/cards.js"></script>
+  <script  src="js/project.js"></script>
+  <script  src="js/facebook.js"></script>
+  <script  src="js/utils.js"></script>
  </body>
 
  </html>

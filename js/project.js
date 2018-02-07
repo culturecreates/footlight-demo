@@ -6,9 +6,11 @@ const websiteInput = document.getElementById("website-input");
 const hero = document.getElementById("hero");
 
 
-const preNote = "<p class='fade-out round-box is-size-5'>"
+const preNote = "<p class='fade-out notification is-info is-size-5'>"
 const postNote ="</p>"
 
+const preProcess = "<p class='fade-out notification is-warning is-size-5'>"
+const postProcess ="</p>"
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -50,32 +52,41 @@ function loadUrl(url) {
   websiteInput.value = url;
 }
 
+function compose_scraper_url(siteUrl) {
+  return  "https://culture-ie.herokuapp.com/basic_scraper.json?site=" + encodeURI(siteUrl);
+}
+
+
 function analyzeSite() {
   //validate url
 
   if (websiteInput.value != "") {
-    let url = "https://culture-ie.herokuapp.com/basic_scraper.json?site=" + encodeURI(websiteInput.value);
-    scrapeSite(url);
-    crawlResult.innerHTML = "Analyzing..."
+    let url = compose_scraper_url(websiteInput.value);
+
+    crawlResult.innerHTML = preProcess + "Analyzing..." + postProcess
     goBtn.classList.add('is-loading');
+    scrapeSite(url);
 
     setTimeout(function () {
       hero.style.display = "none";
       setTimeout(function () {
         document.body.scrollTop = 0;
       }, 100);
-    }, 2000);
+    }, 1000);
     hero.style.opacity = 0;
+
+
 
 
   } else {
     crawlResult.innerHTML = preNote + "Please enter the name or URL of an arts organization." + postNote
-
   }
 }
 
 
+
 function scrapeSite(url) {
+
   fetch(url)
     .then((resp) => resp.json())
     .then(function(jsonResp) {
@@ -86,6 +97,8 @@ function scrapeSite(url) {
       crawlDebug.innerHTML += JSON.stringify(jsonResp,null,4);
 
       if (jsonResp.status == 200) {
+        addCard('quote-bot-1');
+        
         title = jsonResp.data.og_title || jsonResp.data.page_title;
         description = jsonResp.data.og_description || jsonResp.data.page_description;
 
@@ -115,58 +128,31 @@ function scrapeSite(url) {
 
       } else {
         if (jsonResp.status == 400) {
-          crawlResult.innerHTML += "<p>Please enter a valid URL</p>";
+
           if  (jsonResp.data.hasOwnProperty('alternatives')) {
-            crawlResult.innerHTML += "<ul>";
-            for (var i = 0; i < 3; i++) {
-              crawlResult.innerHTML += "<li><a style='cursor:pointer;' onclick='loadUrl(\"" + jsonResp.data.alternatives[i][1] + "\");'>" + jsonResp.data.alternatives[i][0] + "</a></li>";
-            }
-            crawlResult.innerHTML += "</ul>";
+             let altUrl =  jsonResp.data.alternatives[0][1]
+                addCard("validate-site-card", altUrl)
+            //  crawlResult.innerHTML += "<h5>Is this the site?</h5> <p>" + altUrl   + "</p> <button onclick='scrapeSite(\"" + compose_scraper_url(altUrl) + "\")' class='button is-large'> Yes</button>"
+          }
+          else {
+              crawlResult.innerHTML += preNote + "<p>Please enter a valid URL</p>" + postNote;
+          }
+
+          // if  (jsonResp.data.hasOwnProperty('alternatives')) {
+          //   crawlResult.innerHTML += "<ul>";
+          //   for (var i = 0; i < 3; i++) {
+          //     crawlResult.innerHTML += "<li><a style='cursor:pointer;' onclick='loadUrl(\"" + jsonResp.data.alternatives[i][1] + "\");'>" + jsonResp.data.alternatives[i][0] + "</a></li>";
+          //   }
+          //   crawlResult.innerHTML += "</ul>";
 
           }
         }
-        goBtn.classList.remove('is-loading');
-      }
+      goBtn.classList.remove('is-loading');
+
 
     })
     .catch(function(error) {
         crawlResult.HTML = "<pre>Error: " + error + "</pre>";
     });
 
-}
-
-
-function loadFacebookEvents(fbid) {
-  let url = "https://culture-ie.herokuapp.com/facebook.json?fbid=" + encodeURI(fbid);
-
-  fetch(url)
-    .then((resp) => resp.json())
-    .then(function(jsonResp) {
-
-      crawlDebug.innerHTML += JSON.stringify(jsonResp,null,4);
-
-      if (jsonResp.status == 500) {
-        crawlResult.innerHTML += "<p>I ran into an error. I need improvement :-( </p> "
-      } else {
-        let events = jsonResp.data.events;
-        if (events) {
-          let x = events.length;
-
-          crawlResult.innerHTML += "<p> Footlight Technology found " + x + " events coming in the next 6 months</p><ul>";
-          if (x > 0) {
-            events.forEach(function(event) {
-              crawlResult.innerHTML += "<li> " + event.name +  "</li> "
-            });
-            crawlResult.innerHTML += "</ul> ";
-          }
-        } else {
-          crawlResult.innerHTML += "<p> I couldn't find any events. I need improvement. "
-        }
-        }
-
-
-    })
-    .catch(function(error) {
-        crawlResult.innerHTML += "Error" + error;
-    });
 }
