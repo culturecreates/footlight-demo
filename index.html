@@ -10,6 +10,8 @@
      <title>Footlight Technology Demo</title>
      <meta name="description" content="Footlight Technology Demo">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+     <link rel="stylesheet" href="project.css">
+
      <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
        <!--[if lt IE 9]>
        <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -58,7 +60,7 @@
     </div>
   </nav>
 
-  <section class="hero is-primary">
+  <section id="hero" class="hero is-primary">
     <div class="hero-body">
       <div class="container">
         <h1 class="title">
@@ -75,21 +77,20 @@
   <section class="section">
     <div class="container">
 
-        <div class="field has-addons">
-          <div class="control is-expanded">
-            <input  class="input is-large" id="website-input" type="text" placeholder="Website">
-          </div>
-          <div class="control">
-            <button id="go-btn" class="button is-info is-large" type="button">Start</button>
-          </div>
-
+      <div class="field has-addons">
+        <div class="control is-expanded">
+          <input  class="input is-large" id="website-input" type="text" placeholder="Website">
         </div>
+        <div class="control">
+          <button id="go-btn" class="button is-info is-large" type="button">Check</button>
+        </div>
+      </div>
 
-      <div class="columns">
-        <div class="column">
+      <div class="content">
+
           <div id="crawl-result">
           </div>
-        </div>
+
 
       </div>
     </div>

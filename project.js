@@ -3,6 +3,11 @@ const crawlResult = document.getElementById('crawl-result');
 const crawlDebug = document.getElementById('crawl-debug');
 const goBtn = document.getElementById('go-btn');
 const websiteInput = document.getElementById("website-input");
+const hero = document.getElementById("hero");
+
+
+const preNote = "<p class='fade-out round-box is-size-5'>"
+const postNote ="</p>"
 
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -33,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 goBtn.addEventListener("click",analyzeSite);
+
 websiteInput.addEventListener("keyup", function(event) {
   event.preventDefault();
   if (event.keyCode === 13) {
@@ -52,8 +58,15 @@ function analyzeSite() {
     scrapeSite(url);
     crawlResult.innerHTML = "Analyzing..."
     goBtn.classList.add('is-loading');
+
+    setTimeout(function () {
+     hero.style.display = "none";
+   }, 2000);
+    hero.style.opacity = 0;
+
   } else {
-    crawlResult.innerHTML = "Please enter a URL or the name of an arts organization."
+    crawlResult.innerHTML = preNote + "Please enter the name or URL of an arts organization." + postNote
+
   }
 }
 
