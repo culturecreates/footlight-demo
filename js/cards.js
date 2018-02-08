@@ -1,25 +1,30 @@
 function addCard(cardName, str) {
   if (readyForNextCard()) {
-
     console.log("Showing card:" + cardName)
-    if (cardName == "validate-site-card")  {
+    if (cardName == "analyzing-card")  {
+        goBtn.classList.add('is-loading');
+        let card = document.getElementById(cardName);
+        crawlResult.innerHTML += card.innerHTML
+
+      }
+    else if (cardName == "validate-site-card")  {
         document.getElementById("site-name-check").innerText = str
-        let card = document.getElementById("validate-site-card");
+        let card = document.getElementById(cardName);
         crawlResult.innerHTML = card.innerHTML
       }
     else if (cardName == "quote-bot-1")  {
-        let card = document.getElementById("quote-bot-1");
+        let card = document.getElementById(cardName);
         crawlResult.innerHTML = card.innerHTML
       }
     else if (cardName == "rate-site-card")  {
         document.getElementById("rate-site-name").innerText = str[0]
-        let card = document.getElementById("rate-site-card");
+        let card = document.getElementById(cardName);
         crawlResult.innerHTML = card.innerHTML
       }
     else if (cardName == "event-card")  {
         document.getElementById("event-name").innerText = str[0]
         document.getElementById("event-thumbnail").src = str[1]
-        let card = document.getElementById("event-card");
+        let card = document.getElementById(cardName);
         crawlResult.innerHTML += card.innerHTML
       }
     else if (cardName == "clear-all") {

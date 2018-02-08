@@ -119,8 +119,6 @@
           is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
         </p>
       </div>
-
-
       <div class="content" style="border: 2px dashed red;">
         <pre>
           <div id="crawl-debug">
@@ -133,9 +131,22 @@
 
   <!-- SECTION FOR CHAT CARDS -->
 
-  <section class="section chat-card" >
+  <section  class="section chat-card" >
+    <div id="analyzing-card" class="container">
+      <article class="notification is-info is-size-5 fade-in">
+
+            <span class="icon">
+              <i class="fas fa-spinner fa-pulse"></i>
+            </span>
+            Analyzing...
+      </article>
+    </div>
+  </section>
+
+
+  <section class="section chat-card">
     <div id="validate-site-card" class="container">
-      <article  class="notification is-main fade-in">
+      <article  class="notification fade-in">
         <div class="columns">
           <div class="column is-one-quarter">
             <figure class="image is-4by3">
@@ -167,8 +178,6 @@
           <button class="delete" aria-label="delete"></button>
         </div>
         <div class="message-body">
-
-
             <p>Did you know that more than 50% of visitors to websites are bots and not humans beings. The ratio of bots versus people on websites that have less traffic can reach as high as 90%.
             </p>
         </div>
@@ -178,7 +187,7 @@
 
   <section  class="section chat-card" >
     <div id="rate-site-card" class="container">
-      <div class="notification is-warning fade-in">
+      <article class="notification is-warning fade-in">
           <p class="title">Site Rating</p>
           <p id="rate-site-name" class="subtitle">Top tile</p>
           <p>
@@ -187,22 +196,36 @@
           </span>
           No markup
         </p>
-      </div>
+      </article>
     </div>
   </section>
 
   <section  class="section chat-card" >
     <div id="event-card" class="container">
-      <article  class="notification is-link fade-in">
+      <article class="fade-in">
         <div class="columns">
-          <div class="column is-one-quarter">
-            <figure class="image is-4by3">
-              <img id="event-thumbnail" src="https://bulma.io/images/placeholders/640x480.png">
-            </figure>
+          <div class="column">
+            <div  class="notification fade-in">
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-4by3">
+                    <img id="event-thumbnail" src="https://bulma.io/images/placeholders/640x480.png">
+                  </figure>
+                </div>
+                <div class="column">
+                  <p id="event-name" class="title">Event</p>
+                  <p id="event-location" class="subtitle">Location</p>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="column">
-            <p id="event-name" class="title">Event</p>
-            <p id="event-location" class="subtitle">Location</p>
+            <div class="notification is-primary">
+            </div>
+          </div>
+          <div class="column">
+            <div class="notification is-danger">
+            </div>
           </div>
         </div>
       </article>
@@ -211,7 +234,11 @@
 
 
   <script  src="js/cards.js"></script>
+  <script  src="js/utils.js"></script>
+  <script  src="js/analyze.js"></script>
   <script  src="js/project.js"></script>
+
+  <script  src="js/scrape.js"></script>
   <script  src="js/facebook.js"></script>
   <script  src="js/utils.js"></script>
  </body>
