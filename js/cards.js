@@ -1,15 +1,57 @@
-function addCard(cardName, url) {
-  if (cardName == "validate-site-card") {
+function addCard(cardName, str) {
+  if (readyForNextCard()) {
 
-     document.getElementById("site-name-check").innerText = url
-     let card = document.getElementById("validate-site-card");
-     crawlResult.innerHTML += card.innerHTML
-  //  crawlResult.innerHTML += "<h5>Is this the site?</h5> <p>" + str   + "</p> <button onclick='scrapeSite(\"" + compose_scraper_url(str) + "\")' class='button is-large'> Yes</button>"
-} else if (cardName == "quote-bot-1") {
-  let card = document.getElementById("quote-bot-1");
-  crawlResult.innerHTML = card.innerHTML
-} else if (cardName == "rate-site-card") {
-  let card = document.getElementById("rate-site-card");
-  crawlResult.innerHTML += card.innerHTML
+    console.log("Showing card:" + cardName)
+    if (cardName == "validate-site-card")  {
+        document.getElementById("site-name-check").innerText = str
+        let card = document.getElementById("validate-site-card");
+        crawlResult.innerHTML = card.innerHTML
+      }
+    else if (cardName == "quote-bot-1")  {
+        let card = document.getElementById("quote-bot-1");
+        crawlResult.innerHTML = card.innerHTML
+      }
+    else if (cardName == "rate-site-card")  {
+        document.getElementById("rate-site-name").innerText = str[0]
+        let card = document.getElementById("rate-site-card");
+        crawlResult.innerHTML = card.innerHTML
+      }
+    else if (cardName == "event-card")  {
+        document.getElementById("event-name").innerText = str[0]
+        document.getElementById("event-thumbnail").src = str[1]
+        let card = document.getElementById("event-card");
+        crawlResult.innerHTML += card.innerHTML
+      }
+    else if (cardName == "clear-all") {
+        crawlResult.innerHTML = ""
+      }
+    startMinimumCountDown()
+  } else {
+    //Callback when countDown is over
+    cardQueue.push([cardName,str])
+    console.log("Delaying card:" + cardName,cardQueue )
+  }
 }
+
+
+
+function readyForNextCard() {
+  if (countingDown === undefined) {
+    // Initialize
+    let countingDown = false
+  }
+  return !countingDown
+}
+
+function startMinimumCountDown() {
+  countingDown = true
+  console.log("Countdown starting...")
+  setTimeout(function () {
+    countingDown = false;
+    console.log("Countdown end.");
+    if (cardQueue.length > 0) {
+      let cardData = cardQueue.shift()
+      addCard(cardData[0], cardData[1])
+    }
+  }, 4000);
 }

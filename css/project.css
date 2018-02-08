@@ -1,5 +1,5 @@
 .chat-card {
-  display: block;
+  display: none;
 }
 
 
@@ -17,3 +17,12 @@
 .fade-out {
  animation:fadeOut ease-in forwards 5s;
  }
+
+ @keyframes fadeIn {
+   0% { opacity:0; }
+  100% { opacity:1; }
+ }
+
+ .fade-in {
+  animation:fadeIn ease-in forwards 1s;
+  }

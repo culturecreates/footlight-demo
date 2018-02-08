@@ -5,6 +5,9 @@ const goBtn = document.getElementById('go-btn');
 const websiteInput = document.getElementById("website-input");
 const hero = document.getElementById("hero");
 
+let countingDown
+let cardQueue = []
+
 
 const preNote = "<p class='fade-out notification is-info is-size-5'>"
 const postNote ="</p>"
@@ -58,7 +61,7 @@ function compose_scraper_url(siteUrl) {
 
 
 function analyzeSite() {
-  console.log("analyseSite")
+
   // remove focus so keyboard on mobile will close
     websiteInput.blur()
 
@@ -97,12 +100,12 @@ function scrapeSite(url) {
       crawlDebug.innerHTML += JSON.stringify(jsonResp,null,4);
 
       if (jsonResp.status == 200) {
-        addCard('quote-bot-1');
 
+        addCard('quote-bot-1');
         title = jsonResp.data.og_title || jsonResp.data.page_title;
         description = jsonResp.data.og_description || jsonResp.data.page_description;
-        addCard('rate-site-card',title, description);
 
+        addCard('rate-site-card',[title, description]);
         if (title != null) {
           crawlResult.innerHTML += "<h1>" + title + "</h1>";
         }
