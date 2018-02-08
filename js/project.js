@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-goBtn.addEventListener("click",analyzeSite);
+goBtn.addEventListener('click',analyzeSite);
 
 websiteInput.addEventListener("keyup", function(event) {
   event.preventDefault();
@@ -58,8 +58,11 @@ function compose_scraper_url(siteUrl) {
 
 
 function analyzeSite() {
-  //validate url
+  console.log("analyseSite")
+  // remove focus so keyboard on mobile will close
+    websiteInput.blur()
 
+  //validate url
   if (websiteInput.value != "") {
     let url = compose_scraper_url(websiteInput.value);
 
@@ -75,9 +78,6 @@ function analyzeSite() {
     }, 1000);
     hero.style.opacity = 0;
 
-
-
-
   } else {
     crawlResult.innerHTML = preNote + "Please enter the name or URL of an arts organization." + postNote
   }
@@ -91,16 +91,17 @@ function scrapeSite(url) {
     .then((resp) => resp.json())
     .then(function(jsonResp) {
 
-      crawlResult.innerHTML = "";
+    //  crawlResult.innerHTML = "";
       crawlDebug.innerHTML = "";
 
       crawlDebug.innerHTML += JSON.stringify(jsonResp,null,4);
 
       if (jsonResp.status == 200) {
         addCard('quote-bot-1');
-        
+
         title = jsonResp.data.og_title || jsonResp.data.page_title;
         description = jsonResp.data.og_description || jsonResp.data.page_description;
+        addCard('rate-site-card',title, description);
 
         if (title != null) {
           crawlResult.innerHTML += "<h1>" + title + "</h1>";
