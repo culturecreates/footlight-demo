@@ -5,15 +5,18 @@ const goBtn = document.getElementById('go-btn');
 const websiteInput = document.getElementById("website-input");
 const hero = document.getElementById("hero");
 
-let countingDown
-let cardQueue = []
-
-
-const preNote = "<p class='fade-out notification is-info is-size-5'>"
-const postNote ="</p>"
-
 
 document.addEventListener('DOMContentLoaded', function () {
+    // click on Search button
+    goBtn.addEventListener('click',analyzeSite);
+
+    // press ENTER to search
+    websiteInput.addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+          goBtn.click();
+      }
+    });
 
   // Get all "navbar-burger" elements
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
@@ -37,14 +40,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-});
-
-
-goBtn.addEventListener('click',analyzeSite);
-
-websiteInput.addEventListener("keyup", function(event) {
-  event.preventDefault();
-  if (event.keyCode === 13) {
-      goBtn.click();
-  }
 });

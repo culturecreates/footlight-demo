@@ -7,20 +7,11 @@
    transition: all 1s linear;
 }
 
-article {
-     transition: all 1s linear;
+#crawl-result {
+  opacity: 1;
+  transition: all 0.5s linear;
 }
 
-@keyframes fadeOut {
-  0% { opacity:0; }
-  10%  { opacity:1;}
-  90%  { opacity:1;}
- 100% { opacity:0; }
-}
-
-.fade-out {
- animation:fadeOut ease-in forwards 5s;
- }
 
  @keyframes fadeIn {
    0% { opacity:0; }
@@ -28,5 +19,5 @@ article {
  }
 
  .fade-in:last-of-type  {
-  animation:fadeIn ease-in forwards 1s;
+   animation:fadeIn ease-in forwards 0.5s;
   }

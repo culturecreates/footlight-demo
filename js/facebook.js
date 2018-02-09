@@ -8,31 +8,21 @@ function loadFacebookEvents(fbid) {
       crawlDebug.innerHTML += JSON.stringify(jsonResp,null,4);
 
       if (jsonResp.status == 500) {
-        crawlResult.innerHTML += "<p>I ran into an error. I need improvement :-( </p> "
+        addCard('message-card',["I ran into an error. I need improvement :-("])
       } else {
         let events = jsonResp.data.events;
         console.log(events);
-        if (events) {
-          let x = events.length;
-
-          crawlResult.innerHTML += "<p> Footlight Technology found " + x + " events coming in the next 6 months</p><ul>";
-          console.log("FB event",[events[0].name,events[0].cover.source]);
-          addCard('event-card',[events[0].name, events[0].cover.source]);
-
-          if (x > 0) {
-            events.forEach(function(event) {
-              crawlResult.innerHTML += "<li> " + event.name +  "</li> "
-            });
-            crawlResult.innerHTML += "</ul> ";
-          }
+        if (events.length > 0) {
+          // start loading images right away to cache them in the local browser
+          
+          addCard('event-card',[events[0].name, events[0].cover.source],0);
+          addCard('event-card',[events[1].name, events[1].cover.source],5000);
         } else {
-          crawlResult.innerHTML += "<p> I couldn't find any events. I need improvement. "
+          addCard('message-card',["I couldn't find any Facebook events."])
         }
-        }
-
-
+      }
     })
     .catch(function(error) {
-        crawlResult.innerHTML += "Error" + error;
+        addCard('message-card',["Error" + error])
     });
 }

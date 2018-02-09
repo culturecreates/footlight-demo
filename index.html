@@ -134,15 +134,24 @@
   <section  class="section chat-card" >
     <div id="analyzing-card" class="container">
       <article class="notification is-info is-size-5 fade-in">
-
-            <span class="icon">
-              <i class="fas fa-spinner fa-pulse"></i>
-            </span>
-            Analyzing...
+        <p>
+          <span class="icon">
+            <i class="fas fa-spinner fa-pulse"></i>
+          </span>
+          Analyzing
+        </p>
       </article>
     </div>
   </section>
 
+
+  <section  class="section chat-card" >
+    <div id="message-card" class="container">
+      <article class="notification is-info is-size-5 fade-in">
+        <p id="message-text"> Message goes here. </p>
+      </article>
+    </div>
+  </section>
 
   <section class="section chat-card">
     <div id="validate-site-card" class="container">
@@ -170,9 +179,6 @@
       <article  class="message is-link fade-in">
         <div class="message-header">
           <p>
-            <span class="icon">
-              <i class="fas fa-spinner fa-pulse"></i>
-            </span>
             Food for thought
           </p>
           <button class="delete" aria-label="delete"></button>
@@ -188,14 +194,15 @@
   <section  class="section chat-card" >
     <div id="rate-site-card" class="container">
       <article class="notification is-warning fade-in">
-          <p class="title">Site Rating</p>
-          <p id="rate-site-name" class="subtitle">Top tile</p>
-          <p>
-            <span class="icon has-text-danger">
+        <p class="title">Site Rating</p>
+        <p id="rate-site-title" class="subtitle">Top tile</p>
+        <p>
+          <span class="icon has-text-danger">
             <i class="fas fa-ban"></i>
           </span>
           No markup
         </p>
+        <p id="rate-site-description"></p>
       </article>
     </div>
   </section>

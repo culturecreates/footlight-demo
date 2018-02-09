@@ -1,15 +1,22 @@
 function analyzeSite() {
 
   // remove focus so keyboard on mobile will close
-    websiteInput.blur()
+  websiteInput.blur()
+
+  // start button spinner
+  goBtn.classList.add('is-loading');
+
+  crawlDebug.innerHTML = "";
 
   //validate url
   if (websiteInput.value != "") {
     let url = compose_scraper_url(websiteInput.value);
-    addCard('analyzing-card')
-    //crawlResult.innerHTML = preProcess + "Analyzing..." + postProcess
+    addCard('clear-all','',500)
+    addCard('analyzing-card','',0)
+    addCard('quote-bot-1','',5000);
     scrapeSite(url);
 
+    // Hide HERO on page to make more room
     setTimeout(function () {
       hero.style.display = "none";
       setTimeout(function () {
@@ -19,6 +26,8 @@ function analyzeSite() {
     hero.style.opacity = 0;
 
   } else {
-    crawlResult.innerHTML = preNote + "Please enter the name or URL of an arts organization." + postNote
+    addCard('clear-all','',500)
+    addCard('message-card',['Please enter a name or URL'],3000)
+    addCard('clear-all','',500)
   }
 }
