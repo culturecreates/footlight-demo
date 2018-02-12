@@ -167,10 +167,10 @@
             </figure>
           </div>
           <div class="column">
-            <p class="title">This site?</p>
+            <p class="title">Scan this site?</p>
             <p id="site-name-check" class="subtitle">http://culturecreates.com</p>
-            <button id="site-check-ok" onclick="scrapeSite(compose_scraper_url(document.getElementById('site-name-check').innerText))" class="button is-large">Yes</button>
-            <button id="site-check-ok" onclick="alert('Please enter the URL and try again.')" class="button is-large">No</button>
+            <button id="site-check-ok" onclick="scrapeSite(compose_scraper_url(document.getElementById('site-name-check').innerText))" class="button is-large is-link">Yes</button>
+            <button id="site-check-ok" onclick="alert('Please enter the URL and try again.')" class="button is-large is-link">No</button>
           </div>
         </div>
       </article>
@@ -257,12 +257,17 @@
             <div class="tile is-parent is-vertical">
               <article class="tile is-child notification is-primary">
                 <p class="title">Scan Completed</p>
-                <p class="subtitle">Footlight has scanned this web site for events and generated a score card to rate their find-ability.</p>
+                <p class="subtitle">Footlight has rated the find-ability of events.</p>
               </article>
               <article class="tile is-child notification is-warning">
                 <p class="title">Summary</p>
-                <p class="subtitle">Find-ability is NOT great</p>
-                <p>This website was optimized for human eyeballs only!</p>
+                <p class="subtitle">Find-ability is NOT great :-(</p>
+                <p><div class="tags has-addons">
+                  <span class="tag is-dark">Total score</span>
+                  <span class="tag is-danger">10</span>
+                </div>
+              </p>
+                <p>This website was optimized for human eyeballs - and not for bots!</p>
 
 
               </article>
@@ -278,24 +283,20 @@
             </div>
           </div>
           <div class="tile is-parent">
-            <article class="tile is-child notification is-danger">
-              <p class="title">Would you like to make these events findable?</p>
-              <p class="subtitle">This site should urgently structure the event data for bots </p>
+            <article class="tile is-child notification">
+              <p class="title">Would you like to improve event findablity?</p>
+              <p class="subtitle">This site should urgently structure event data so bots can help real people find the events. </p>
               <div class="content">
 
-                <button class="button is-large">Yes</button>
-                  <button class="button is-large">No</button>
+                <button class="button is-large is-link">Yes</button>
+                  <button class="button is-large is-link">No</button>
               </div>
             </article>
           </div>
         </div>
         <div class="tile is-parent">
-          <article class="tile is-child notification is-primary">
+          <article class="tile is-child notification is-danger">
               <p class="title">Score Card</p>
-                <div class="tags has-addons">
-                  <span class="tag is-dark">Total score</span>
-                  <span class="tag is-danger">10%</span>
-                </div>
 
               <p class="subtitle">Footlight checks for the following indicators of linked and strucutred data.</p>
                 <div class="tile">
