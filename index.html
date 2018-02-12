@@ -9,10 +9,13 @@
 
      <title>Footlight Technology Demo</title>
      <meta name="description" content="Footlight Technology Demo">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+     <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"-->
+
+     <link rel="stylesheet" href="css/bulma.css">
      <link rel="stylesheet" href="css/project.css">
 
-     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+     <!--script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script-->
+
        <!--[if lt IE 9]>
        <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
      <![endif]-->
@@ -79,10 +82,10 @@
 
       <div class="field has-addons">
         <div class="control is-expanded">
-          <input  class="input is-large" id="website-input" type="text" placeholder="website" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+          <input  class="input is-large" id="website-input" type="text" placeholder="arts organization" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
         </div>
         <div class="control">
-          <button id="go-btn" class="button is-info is-large" type="button">Check</button>
+          <button id="go-btn" class="button is-info is-large" type="button">Scan</button>
         </div>
       </div>
 
@@ -90,23 +93,24 @@
       <div id="crawl-result">
       </div>
 
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
 
 
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
 
 
     </div>
   </section>
+
 
 
 
@@ -191,16 +195,216 @@
     </div>
   </section>
 
-  <section  class="section chat-card" >
-    <div id="rate-site-card" class="container">
-      <article class="notification is-warning fade-in">
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png">
-            </figure>
+<!--section class="section chat-card">
+  <div class="container">
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+                <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+              </p>
+            </div>
+            <nav class="level is-mobile">
+              <div class="level-left">
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                </a>
+                <a class="level-item">
+                  <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                </a>
+              </div>
+            </nav>
           </div>
-          <div class="column">
+          <div class="media-right">
+            <button class="delete"></button>
+
+              <div class="box has-text-centered">
+                <p class="image is-64by64" >
+                  <img class="logo" src="images/json-ld-logo.png" alt="" >
+                </p>
+                <p class="heading">JSON-LD</p>
+                <p class="title">NO</p>
+              </div>
+              <div class="box  has-text-centered">
+                <figure class="image is-64by64">
+                  <img class="logo" src="images/schema-org-logo.png" alt="" >
+                </figure>
+                <p class="heading">Schema</p>
+                <p class="title">NO</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section-->
+
+  <section class="section chat-card" >
+    <div id="rate-site-card" class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Scan Completed</p>
+                <p class="subtitle">Footlight has scanned this web site for events and generated a score card to rate their find-ability.</p>
+              </article>
+              <article class="tile is-child notification is-warning">
+                <p class="title">Summary</p>
+                <p class="subtitle">Find-ability is NOT great</p>
+                <p>This website was optimized for human eyeballs only!</p>
+
+
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">Web Site </p>
+                <p class="subtitle">This is the website Footlight scanned.</p>
+                <figure class="image is-4by3">
+                  <img src="https://bulma.io/images/placeholders/640x480.png">
+                </figure>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-danger">
+              <p class="title">Would you like to make these events findable?</p>
+              <p class="subtitle">This site should urgently structure the event data for bots </p>
+              <div class="content">
+
+                <button class="button is-large">Yes</button>
+                  <button class="button is-large">No</button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-primary">
+              <p class="title">Score Card</p>
+                <div class="tags has-addons">
+                  <span class="tag is-dark">Total score</span>
+                  <span class="tag is-danger">10%</span>
+                </div>
+
+              <p class="subtitle">Footlight checks for the following indicators of linked and strucutred data.</p>
+                <div class="tile">
+                  <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box has-text-centered">
+                      <p class="image is-24by24" >
+                        <img class= "rating-icon" src="images/json-ld-logo.png" alt="" >
+                      </p>
+                      <p class="heading">JSON-LD</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/schema-org-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">Schema</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">10</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/open-graph-logo.png" alt="">
+                      </figure>
+                      <p class="heading">Facebook</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/google-assistant.png" alt="" >
+                      </figure>
+                      <p class="heading">Google</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tile is-parent is-vertical">
+                    <div class="tile is-child  box has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/isni-icon-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">ISNI</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/thomson-reuters-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">PermID</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/geonames-icon-logo.png" alt="">
+                      </figure>
+                      <p class="heading">GeoNames</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/wikidata-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">Wikidata</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">points</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section  class="section chat-card" >
+    <div id="old-rate-site-card" class="container">
+      <article class="media is-warning fade-in">
+        <div class="notification">
+          <figure class="media-left">
+            <p class="image is-4by3">
+              <img src="https://bulma.io/images/placeholders/640x480.png">
+            </p>
+          </figure>
+          <div class="media-content">
             <p class="title">Site Rating</p>
             <p id="rate-site-title" class="subtitle">Top tile</p>
             <p>
@@ -211,66 +415,74 @@
             </p>
             <p id="rate-site-description"></p>
           </div>
+          <div class="media-right">
+            <div class="tile is-ancestor is-vertical has-text-centered">
+              <div class="tile is-parent">
+                <div class="tile is-child box">
+                  <p class="image is-24by24" >
+                    <img class= "rating-icon" src="images/json-ld-logo.png" alt="" >
+                  </p>
+                  <p class="heading">JSON-LD</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box  has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/schema-org-logo.png" alt="" >
+                  </figure>
+                  <p class="heading">Schema</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/open-graph-logo.png" alt="">
+                  </figure>
+                  <p class="heading">Facebook</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box  has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/google-assistant.png" alt="" >
+                  </figure>
+                  <p class="heading">Google</p>
+                  <p class="title">NO</p>
+                </div>
+              </div>
+              <div class="tile is-parent">
+                <div class="tile is-child  box has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/isni-icon-logo.png" alt="" >
+                  </figure>
+                  <p class="heading">ISNI</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box  has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/thomson-reuters-logo.png" alt="" >
+                  </figure>
+                  <p class="heading">PermID</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box  has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/geonames-icon-logo.png" alt="">
+                  </figure>
+                  <p class="heading">GeoNames</p>
+                  <p class="title">NO</p>
+                </div>
+                <div class="tile is-child box  has-text-centered">
+                  <figure class="image is-24by24">
+                    <img class= "rating-icon" src="images/wikidata-logo.png" alt="" >
+                  </figure>
+                  <p class="heading">Wikidata</p>
+                  <p class="title">NO</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
       </article>
-      <div class="tile is-parent">
-        <div class="tile is-child  box has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/json-ld-logo.png" alt="" >
-          </figure>
-          <p class="heading">Event JSON-LD</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box  has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/schema-org-logo.png" alt="" >
-          </figure>
-          <p class="heading">Event Schema</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/open-graph-logo.png" alt="">
-          </figure>
-          <p class="heading">Facebook</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box  has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/google-assistant.png" alt="" >
-          </figure>
-          <p class="heading">Google</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child  box has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/isni-icon-logo.png" alt="" >
-          </figure>
-          <p class="heading">ISNI</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box  has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/thomson-reuters-logo.png" alt="" >
-          </figure>
-          <p class="heading">PermID</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box  has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/geonames-icon-logo.png" alt="">
-          </figure>
-          <p class="heading">GeoNames</p>
-          <p class="title">NO</p>
-        </div>
-        <div class="tile is-child box  has-text-centered">
-          <figure class="image is-1by1">
-            <img src="images/wikidata-logo.png" alt="" >
-          </figure>
-          <p class="heading">Wikidata</p>
-          <p class="title">NO</p>
-        </div>
-      </div>
+
     </div>
   </section>
 
