@@ -10,7 +10,7 @@ function addCard(cardName, data, delay_ms) {
         crawlResult.innerHTML += document.getElementById(cardName).innerHTML
       }
     else if (cardName == "message-card")  {
-        document.getElementById("message-text").innerText = data[0]
+        document.getElementById("message-text").innerHTML = data[0]
         crawlResult.innerHTML += document.getElementById(cardName).innerHTML
         goBtn.classList.remove('is-loading');
       }
@@ -48,11 +48,16 @@ function addCard(cardName, data, delay_ms) {
         goBtn.classList.remove('is-loading');
         crawlResult.innerHTML += document.getElementById(cardName).innerHTML
       }
-    else if (cardName == "event-card")  {
+      else if (cardName == "event-extraction-card")  {
         // data = [name,url]
-        document.getElementById("event-name").innerText = data[0]
-        document.getElementById("event-thumbnail").src = data[1]
+        document.getElementById("extraction-text").innerText = data
         crawlResult.innerHTML += document.getElementById(cardName).innerHTML
+      }
+      else if (cardName == "event-card")  {
+      // data = [name,url]
+      document.getElementById("event-name").innerText = data[0]
+      document.getElementById("event-thumbnail").src = data[1]
+      crawlResult.innerHTML += document.getElementById(cardName).innerHTML
       }
     else if (cardName == "clear-all") {
         document.getElementById("crawl-result").style.opacity=0;

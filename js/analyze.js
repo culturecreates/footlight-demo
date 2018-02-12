@@ -12,7 +12,7 @@ function analyzeSite() {
   if (websiteInput.value != "") {
     let url = compose_scraper_url(websiteInput.value);
     addCard('clear-all','',500)
-    addCard('analyzing-card','',0)
+    addCard('analyzing-card','',1000)
     addCard('quote-bot-1','',5000);
     scrapeSite(url);
 

@@ -5,7 +5,7 @@
 
 function scrapeSite(url) {
   addCard('clear-all','',500)
-  addCard('analyzing-card','',2000)
+  addCard('message-card',['Checking the <strong>find-ability</strong> of events.'],2000)
   fetch(url)
     .then((resp) => resp.json())
     .then(function(jsonResp) {
