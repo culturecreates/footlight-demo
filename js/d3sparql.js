@@ -9,7 +9,7 @@
 
 var d3sparql = {
   version: "d3sparql.js version 2017-09-04",
-  debug: true  // set to true for showing debug information
+  debug: false  // set to true for showing debug information
 }
 
 /*
@@ -236,7 +236,6 @@ d3sparql.tree = function(json, config) {
     }
   }
   var tree = traverse(root)
-
   if (d3sparql.debug) { console.log(JSON.stringify(tree)) }
   return tree
 }

@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/graph.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="js/d3sparql.js"></script>
-    <script src="js/graph.js"></script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   </head>
@@ -60,26 +58,26 @@
         </div>
       </div>
     </nav>
-
     <section id="hero" class="hero is-primary">
       <div class="hero-body fade-in">
         <div class="container">
           <h1 class="title">
-            Culture Creates Knowledge Graph
+            Knowledge Graph
           <p class="subtitle">
-            Here you have have a glimpse at the rapidly growing collection of events from across Canada
+            A glimpse of aggregate performing arts events
           </p>
-          <form class="form">
+          <form class="form" id="search_form">
             <div class="has-text-centered">
             <div class="field is-grouped is-grouped-centered is-grouped-multiline is-horizontal  ">
               <div class="control has-icons-left">
                 <div class="select is-medium">
                   <select>
-                    <option selected>Canada</option>
-                    <option disabled>Indigenous Territories</option>
-                    <option>Quebec</option>
+                    <option disabled>World</option>
+                    <option disabled>Canada</option>
+                    <option disabled>Turtle Island</option>
+                    <option selected>Quebec</option>
                     <option disabled>Ontario</option>
-                    <option disabled >Alberta</option>
+                    <option disabled>Alberta</option>
                     <option disabled>British Columbia</option>
                   </select>
                 </div>
@@ -89,10 +87,10 @@
               </div>
               <div class="control has-icons-left">
                 <div class="select is-medium">
-                  <select>
-                    <option selected>2017/2018</option>
-                    <option>Next 6 Months</option>
-                    <option>Next 30 days</option>
+                  <select id="time_span">
+                    <option selected value="year">2017/2018</option>
+                    <option value="6m">Next 6 Months</option>
+                    <option value="1m">Next 30 days</option>
                   </select>
                 </div>
                 <span class="icon is-medium is-left">
@@ -123,7 +121,7 @@
     </section>
     <section class="section">
       <div class="container">
-        <div class="has-text-centered" id="result">
+        <div  class="has-text-centered" id="result">
         </div>
         <p class="control">
           <a onclick="toggleQueryDisplay()">
@@ -154,32 +152,18 @@
             </div>
             <div class="field-body">
               <textarea  class="textarea" id="sparql" rows=15>
-PREFIX schema: <http://schema.org/>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-select ?root_name ?parent_name ?child_name where {
-  {
- VALUES ?root_name { "Montreal" }
-      ?place a schema:Place .
-      ?place schema:name ?child_name .
-      ?place schema:city ?parent_name .
-  }  UNION  {
-       VALUES ?root_name { "Montreal" }
-      ?event a schema:Event .
-      ?event schema:name ?child_name .
-      ?event schema:location ?location .
-      ?location schema:name ?parent_name .
-      ?event schema:endDate ?time .
-     FILTER(xsd:integer(?time) > 1519313163)
-  }
-}
               </textarea>
             </div>
           </div>
+          <p class="control has-text-centered">
+            <a id="search_button_custom" class="button is-medium is-info">
+              Custom Query
+            </a>
+          </p>
         </div>
       </div>
     </section>
-
-    <section id="newsletter" class="hero is-primary">
+    <section id="newsletter" class="hero is-danger">
       <div class="hero-body">
         <div class="container">
           <div class="columns is-vcentered">
@@ -204,8 +188,6 @@ select ?root_name ?parent_name ?child_name where {
         </div>
       </div>
     </section>
-
-
     <footer class="footer">
       <div class="container">
         <div class="content has-text-centered">
@@ -217,5 +199,8 @@ select ?root_name ?parent_name ?child_name where {
         </div>
       </div>
     </footer>
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/d3sparql.js"></script>
+    <script src="js/graph.js"></script>
   </body>
 </html>
