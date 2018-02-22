@@ -69,63 +69,60 @@
           <p class="subtitle">
             Here you have have a glimpse at the rapidly growing collection of events from across Canada
           </p>
+          <form class="form">
+            <div class="has-text-centered">
+            <div class="field is-grouped is-grouped-centered is-grouped-multiline is-horizontal  ">
+              <div class="control has-icons-left">
+                <div class="select is-medium">
+                  <select>
+                    <option selected>Canada</option>
+                    <option disabled>Indigenous Territories</option>
+                    <option>Quebec</option>
+                    <option disabled>Ontario</option>
+                    <option disabled >Alberta</option>
+                    <option disabled>British Columbia</option>
+                  </select>
+                </div>
+                <span class="icon is-medium is-left">
+                  <i class="fas fa-globe"></i>
+                </span>
+              </div>
+              <div class="control has-icons-left">
+                <div class="select is-medium">
+                  <select>
+                    <option selected>2017/2018</option>
+                    <option>Next 6 Months</option>
+                    <option>Next 30 days</option>
+                  </select>
+                </div>
+                <span class="icon is-medium is-left">
+                  <i class="far fa-calendar-alt"></i>
+                </span>
+              </div>
+              <div class="control has-icons-left">
+                <div class="select is-medium">
+                  <select>
+                    <option selected>Dendrogram</option>
+                    <option disabled>Sun Burst</option>
+                  </select>
+                </div>
+                <span class="icon is-medium is-left">
+                  <i class="fas fa-image"></i>
+                </span>
+              </div>
+              <p class="control">
+                <a id="search_button" class="button is-medium is-info">
+                  Query
+                </a>
+              </p>
+            </div>
+            </div>
+          </form>
         </div>
       </div>
     </section>
     <section class="section">
       <div class="container">
-        <form class="form">
-          <div class="has-text-centered">
-          <div class="field is-grouped is-grouped-centered is-grouped-multiline is-horizontal  ">
-            <div class="control has-icons-left">
-              <div class="select is-medium">
-                <select>
-                  <option selected>Canada</option>
-                  <option disabled>Indigenous Territories</option>
-                  <option>Quebec</option>
-                  <option disabled>Ontario</option>
-                  <option disabled >Alberta</option>
-                  <option disabled>British Columbia</option>
-
-                </select>
-              </div>
-              <span class="icon is-medium is-left">
-                <i class="fas fa-globe"></i>
-              </span>
-            </div>
-            <div class="control has-icons-left">
-              <div class="select is-medium">
-                <select>
-                  <option selected>2017/2018</option>
-                  <option>Next 6 Months</option>
-                  <option>Next 30 days</option>
-                </select>
-              </div>
-              <span class="icon is-medium is-left">
-                <i class="far fa-calendar-alt"></i>
-              </span>
-            </div>
-            <div class="control has-icons-left">
-              <div class="select is-medium">
-                <select>
-                  <option selected>Dendrogram</option>
-                  <option disabled>Sun Burst</option>
-                </select>
-              </div>
-              <span class="icon is-medium is-left">
-                <i class="fas fa-image"></i>
-              </span>
-            </div>
-            <p class="control">
-              <a id="search_button" class="button is-medium is-info">
-                Query
-              </a>
-            </p>
-
-          </div>
-          </div>
-
-        </form>
         <div class="has-text-centered" id="result">
         </div>
         <p class="control">
@@ -175,10 +172,8 @@ select ?root_name ?parent_name ?child_name where {
      FILTER(xsd:integer(?time) > 1519313163)
   }
 }
-
               </textarea>
             </div>
-
           </div>
         </div>
       </div>
@@ -193,7 +188,6 @@ select ?root_name ?parent_name ?child_name where {
               <p class="subtitle">Get notified as soon as they are added!</p>
             </div>
             <div class="column">
-
               <div class="field is-grouped">
                 <div class="control has-icons-left is-expanded">
                   <input id="user_email" type="email" value="" name="email" class="input is-flat required email" placeholder="email address" required="">
@@ -205,7 +199,6 @@ select ?root_name ?parent_name ?child_name where {
                   <input value="Subscribe" onclick="subscribeNewsletter();" class="button is-white is-outlined">
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -213,16 +206,16 @@ select ?root_name ?parent_name ?child_name where {
     </section>
 
 
-      <footer class="footer">
-        <div class="container">
-          <div class="content has-text-centered">
-            <p>
-              <strong>Footligh Technology</strong> by <a href="http://culturecreates.com">Culture Creates Inc.</a>. The source code is licensed
-              <a href="LICENSE.md">MIT</a>. The website content
-              is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-            </p>
-          </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="content has-text-centered">
+          <p>
+            <strong>Footligh Technology</strong> by <a href="http://culturecreates.com">Culture Creates Inc.</a>. The source code is licensed
+            <a href="LICENSE.md">MIT</a>. The website content
+            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+          </p>
         </div>
-      </footer>
+      </div>
+    </footer>
   </body>
 </html>
