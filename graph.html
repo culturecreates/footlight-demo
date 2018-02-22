@@ -9,7 +9,7 @@
     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
   </head>
   <body>
-    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <div class="navbar-item">
           <img src="images/footlight-logo.png">
@@ -29,7 +29,7 @@
           <a class="navbar-item" href="scan.html">
             Scan your site
           </a>
-          <a class="navbar-item" href="graph.html">
+          <a class="navbar-item is-active" href="graph.html">
             Knowledge Graph
           </a>
         </div>
@@ -88,9 +88,18 @@
               <div class="control has-icons-left">
                 <div class="select is-medium">
                   <select id="time_span">
-                    <option selected value="year">2017/2018</option>
-                    <option value="6m">Next 6 Months</option>
-                    <option value="1m">Next 30 days</option>
+                    <option selected value="all">All</option>
+                    <option  value="1m">Next 30 days</option>
+                    <option  value="2m">Next 2 months</option>
+                    <option  value="3m">Next 3 months</option>
+                    <option value="JAN">January 2018</option>
+                    <option value="FEB">February 2018</option>
+                    <option value="MAR">March 2018</option>
+                    <option value="APR">April 2018</option>
+                    <option value="MAY">May 2018</option>
+          
+
+
                   </select>
                 </div>
                 <span class="icon is-medium is-left">

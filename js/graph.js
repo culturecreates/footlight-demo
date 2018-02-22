@@ -14,9 +14,9 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n\
 SELECT ?root_name ?parent_name ?child_name where { \n\
   { \n\
       VALUES ?root_name { "Montreal" } \n\
-      ?place a schema:Place . \n\
-      ?place schema:name ?child_name . \n\
-      ?place schema:city ?parent_name . \n\
+      ?location a schema:Place . \n\
+      ?location schema:name ?child_name . \n\
+      ?location schema:city ?parent_name . \n\
   }  UNION  { \n\
        VALUES ?root_name { "Montreal" } \n\
       ?event a schema:Event . \n\
@@ -41,17 +41,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function new_exec() {
   let today_date = new Date
-  let start_time_window = parseInt(today_date.getTime() / 1000)
+  let start_time_window
   let end_time_window
   let new_query
   let selected_time_span = time_span.options[time_span.selectedIndex].value
-  if (selected_time_span == "year") {
-    start_time_window = 0
+  if (selected_time_span == "all") {
+    start_time_window = 1400000000
     end_time_window = 1600000000
-  } else if (selected_time_span == "6m") {
-    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 6)).getTime() / 1000)
+  } else if (selected_time_span == "3m") {
+    start_time_window = parseInt(today_date.getTime() / 1000)
+    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 3)).getTime() / 1000)
+  } else if (selected_time_span == "2m") {
+    start_time_window = parseInt(today_date.getTime() / 1000)
+    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 2)).getTime() / 1000)
   } else if (selected_time_span == "1m") {
+    start_time_window = parseInt(today_date.getTime() / 1000)
     end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 1)).getTime() / 1000)
+  } else if (selected_time_span == "JAN") {
+    start_time_window = parseInt(new Date("1-JAN-2018").getTime() / 1000)
+    end_time_window = parseInt(new Date("1-FEB-2018").getTime() / 1000)
+  } else if (selected_time_span == "FEB") {
+    start_time_window = parseInt(new Date("1-FEB-2018").getTime() / 1000)
+    end_time_window = parseInt(new Date("1-MAR-2018").getTime() / 1000)
+  } else if (selected_time_span == "MAR") {
+    start_time_window = parseInt(new Date("1-MAR-2018").getTime() / 1000)
+    end_time_window = parseInt(new Date("1-APR-2018").getTime() / 1000)
+  } else if (selected_time_span == "APR") {
+    start_time_window = parseInt(new Date("1-APR-2018").getTime() / 1000)
+    end_time_window = parseInt(new Date("1-MAY-2018").getTime() / 1000)
+  } else if (selected_time_span == "MAY") {
+    start_time_window = parseInt(new Date("1-MAY-2018").getTime() / 1000)
+    end_time_window = parseInt(new Date("1-JUN-2018").getTime() / 1000)
   } else {
     alert('error in selected timespan', selected_time_span)
   }
