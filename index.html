@@ -24,7 +24,6 @@
 <body>
   <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-
       <div class="navbar-item">
         <img src="images/footlight-logo.png">
       </div>
@@ -37,80 +36,42 @@
     <div class="navbar-menu">
       <div class="navbar-start">
         <!-- navbar items -->
-        <div class="navbar-item">
-          <a class="navbar-link">
-            Check Findability
-          </a>
-        </div>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Knowledge Graph
-          </a>
-          <div class="navbar-dropdown is-boxed">
-            <a class="navbar-item">
-              Montreal Events
-            </a>
-            <hr class="navbar-divider">
-            <div class="navbar-item">
-              Version 0.9.1
-            </div>
-          </div>
-        </div>
+        <a class="navbar-item" href="index.html">
+          Home
+        </a>
+        <a class="navbar-item" href="scan.html">
+          Scan your site
+        </a>
+        <a class="navbar-item" href="graph.html">
+          Knowledge Graph
+        </a>
       </div>
       <div class="navbar-end">
         <!-- navbar items -->
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control">
+                <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="http://localhost:4000" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=http://localhost:4000&amp;via=jgthms">
+                
+                  <span>
+                    Log in
+                  </span>
+                </a>
+              </p>
+              <p class="control">
+                <a class="button is-primary" href="https://github.com/jgthms/bulma/archive/0.5.1.zip">
+                  <span class="icon">
+                    <i class="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Sign Up</span>
+                </a>
+              </p>
+            </div>
+          </div>
       </div>
     </div>
   </nav>
-
-  <section id="hero" class="hero is-primary">
-    <div class="hero-body fade-in">
-      <div class="container">
-        <h1 class="title">
-          Introducing Footlight.
-        </h1>
-        <p class="subtitle">
-          Footlight extracts <strong> event </strong>information from websites to make them more find-able.
-        </p>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="section">
-    <div class="container">
-
-      <div class="field has-addons">
-
-        <div class="control is-expanded">
-          <input  class="input is-large" id="website-input" type="text" placeholder="arts organization" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        </div>
-        <div class="control">
-          <button id="go-btn" class="button is-info is-large" type="button">Scan</button>
-        </div>
-      </div>
-
-
-      <div id="crawl-result">
-      </div>
-
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-      <br>
-
-
-
-
-    </div>
-  </section>
 
 
 
@@ -124,273 +85,8 @@
           is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
         </p>
       </div>
-      <div class="content" style="border: 2px dashed red;">
-        <pre>
-          <div id="crawl-debug">
-          </div>
-        </pre>
-      </div>
     </div>
   </footer>
-
-
-  <!-- SECTION FOR CHAT CARDS -->
-
-  <section  class="section chat-card" >
-    <div id="analyzing-card" class="container">
-      <article class="notification is-info is-size-5 fade-in">
-        <p>
-          <span class="icon">
-            <i class="fas fa-spinner fa-pulse"></i>
-          </span>
-          Scanning...
-        </p>
-      </article>
-    </div>
-  </section>
-
-
-  <section  class="section chat-card" >
-    <div id="message-card" class="container">
-      <article class="notification is-info is-size-5 fade-in">
-        <p>
-        <span class="icon">
-          <i class="fas fa-spinner fa-pulse"></i>
-        </span>
-        <span id="message-text"> Message goes here. </span>
-      </p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section chat-card">
-    <div id="validate-site-card" class="container">
-      <article  class="notification fade-in">
-        <div class="columns">
-          <div class="column is-one-quarter">
-            <figure class="image is-4by3">
-              <img src="https://bulma.io/images/placeholders/640x480.png">
-            </figure>
-          </div>
-          <div class="column">
-            <p class="title">Did I find the right website?</p>
-
-            <p id="site-name-check" class="subtitle">http://culturecreates.com</p>
-            <button id="site-check-ok" onclick="scrapeSite(compose_scraper_url(document.getElementById('site-name-check').innerText))" class="button is-large is-info">Yes</button>
-            <button id="site-check-ok" onclick="alert('Please enter the URL and try again.')" class="button is-large is-info">No</button>
-          </div>
-        </div>
-      </article>
-    </div>
-
-  </section>
-
-  <section class="section chat-card">
-    <div id="quote-bot-1"  class="container">
-      <article  class="message is-link fade-in">
-        <div class="message-header">
-          <p>
-            Food for thought
-          </p>
-          <button class="delete" aria-label="delete"></button>
-        </div>
-        <div class="message-body">
-            <p>Did you know that on average 75% of visitors to websites in the arts are bots and not humans beings!
-            </p>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section chat-card" >
-    <div id="rate-site-card" class="container">
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-8">
-          <div class="tile">
-            <div class="tile is-parent is-vertical">
-              <article class="tile is-child notification is-primary">
-                <p class="title">Scan Completed</p>
-                <p class="subtitle">Footlight has rated the find-ability of events.</p>
-              </article>
-              <article class="tile is-child notification is-danger">
-                <p class="title">Summary</p>
-                <p class="subtitle">Find-ability is NOT great :-(</p>
-                <p><div class="tags has-addons">
-                  <span class="tag is-dark">Total score</span>
-                  <span class="tag">10</span>
-                </div>
-              </p>
-                <p>This website was optimized for human eyeballs - and not for bots!</p>
-
-
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-info">
-                <p class="title">Web Site </p>
-                <p class="subtitle">This is the website Footlight scanned.</p>
-                <p>
-                  <figure class="image is-4by3">
-                    <img src="https://bulma.io/images/placeholders/640x480.png">
-                  </figure>
-                </p>
-                <p class="has-text-weight-bold" id="rate-site-title">Site Title</p>
-                <p  id="rate-site-description">Site description.</p>
-              </article>
-            </div>
-          </div>
-          <div class="tile is-parent">
-            <article class="tile is-child notification">
-              <p class="title">Would you like to improve event find-ablity?</p>
-              <p class="subtitle">This site should urgently structure event data so bots can help real people find the events. </p>
-              <div class="content">
-
-                <button onclick="displayEvents()" class="button is-large is-info">Yes</button>
-                <button class="button is-large is-info">No</button>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child notification is-warning">
-              <p class="title">Score Card</p>
-
-              <p class="subtitle">Footlight checks for signs of linked and structured data.</p>
-                <div class="tile">
-                  <div class="tile is-parent is-vertical">
-                    <div class="tile is-child box has-text-centered">
-                      <p class="image is-24by24" >
-                        <img class= "rating-icon" src="images/json-ld-logo.png" alt="" >
-                      </p>
-                      <p class="heading">JSON-LD</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box  has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/schema-org-logo.png" alt="" >
-                      </figure>
-                      <p class="heading">Schema</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">10</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/open-graph-logo.png" alt="">
-                      </figure>
-                      <p class="heading">Facebook</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box  has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/google-assistant.png" alt="" >
-                      </figure>
-                      <p class="heading">Google</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="tile is-parent is-vertical">
-                    <div class="tile is-child  box has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/isni-icon-logo.png" alt="" >
-                      </figure>
-                      <p class="heading">ISNI</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box  has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/thomson-reuters-logo.png" alt="" >
-                      </figure>
-                      <p class="heading">PermID</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box  has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/geonames-icon-logo.png" alt="">
-                      </figure>
-                      <p class="heading">GeoNames</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                    <div class="tile is-child box  has-text-centered">
-                      <figure class="image is-24by24">
-                        <img class= "rating-icon" src="images/wikidata-logo.png" alt="" >
-                      </figure>
-                      <p class="heading">Wikidata</p>
-                      <div class="tags has-addons">
-                        <span class="tag is-light">score</span>
-                        <span class="tag is-danger">0</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </article>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section  class="section chat-card" >
-    <div id="event-extraction-card" class="container">
-      <article class="notification is-info is-size-5 fade-in">
-        <p>
-        Footlight extracted <span class="is-size-1" id="extraction-text"> </span> Events.
-      </p>
-      </article>
-    </div>
-  </section>
-
-  <section  class="section chat-card" >
-    <div id="event-card" class="container">
-      <article class="fade-in">
-        <div class="columns">
-          <div class="column">
-            <div  class="notification fade-in">
-              <div class="columns">
-                <div class="column">
-                  <figure class="image is-4by3">
-                    <img id="event-thumbnail" src="https://bulma.io/images/placeholders/640x480.png">
-                  </figure>
-                </div>
-                <div class="column">
-                  <p id="event-name" class="title">Event</p>
-                  <p id="event-location" class="subtitle">Location</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="column">
-            <div class="notification is-danger">
-            </div>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
 
 
   <script  src="js/cards.js"></script>

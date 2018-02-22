@@ -1,0 +1,408 @@
+
+
+ <!DOCTYPE html>
+ <html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+     <title>Footlight Technology Demo</title>
+     <meta name="description" content="Footlight Technology Demo">
+     <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css"-->
+
+     <link rel="stylesheet" href="css/bulma.css">
+     <link rel="stylesheet" href="css/project.css">
+
+     <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+
+       <!--[if lt IE 9]>
+       <script src = "http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+     <![endif]-->
+ </head>
+
+<body>
+  <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <img src="images/footlight-logo.png">
+      </div>
+      <button class="button navbar-burger"  data-target="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start">
+        <!-- navbar items -->
+        <a class="navbar-item" href="index.html">
+          Home
+        </a>
+        <a class="navbar-item" href="scan.html">
+          Scan your site
+        </a>
+        <a class="navbar-item" href="graph.html">
+          Knowledge Graph
+        </a>
+      </div>
+      <div class="navbar-end">
+        <!-- navbar items -->
+      </div>
+    </div>
+  </nav>
+
+
+  <section id="hero" class="hero is-primary">
+    <div class="hero-body fade-in">
+      <div class="container">
+        <h1 class="title">
+          Is your site ready?
+        <p class="subtitle">
+          Use Footlight to check the find-ability of events on your website.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="container">
+
+      <div class="field has-addons">
+
+        <div class="control is-expanded">
+          <input  class="input is-large" id="website-input" type="text" placeholder="your arts organization" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+        </div>
+        <div class="control">
+          <button id="go-btn" class="button is-info is-large" type="button">Scan</button>
+        </div>
+      </div>
+
+      <p id="crawl-result">
+      </p>
+        <p class="has-text-centered">
+          <img src="/images/bot-siting.png" alt="" style="height: 8rem;margin: 40px;">
+        </p>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="content has-text-centered">
+        <p>
+          <strong>Footligh Technology</strong> by <a href="http://culturecreates.com">Culture Creates Inc.</a>. The source code is licensed
+          <a href="LICENSE.md">MIT</a>. The website content
+          is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        </p>
+      </div>
+      <div class="content" style="border: 2px dashed red;">
+        <pre>
+          <div id="crawl-debug">
+          </div>
+        </pre>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- SECTION FOR CHAT CARDS -->
+
+  <section  class="section chat-card" >
+    <div id="analyzing-card" class="container">
+      <article class="notification is-info is-size-5 fade-in">
+        <p>
+          <span class="icon">
+            <i class="fas fa-spinner fa-pulse"></i>
+          </span>
+          Scanning...
+        </p>
+      </article>
+    </div>
+  </section>
+
+
+  <section  class="section chat-card" >
+    <div id="message-card" class="container">
+      <article class="notification is-info is-size-5 fade-in">
+        <p>
+        <span class="icon">
+          <i class="fas fa-spinner fa-pulse"></i>
+        </span>
+        <span id="message-text"> Message goes here. </span>
+      </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section chat-card">
+    <div id="validate-site-card" class="container">
+      <article  class="notification fade-in">
+        <div class="columns">
+          <div class="column is-one-quarter">
+            <figure class="image is-4by3">
+              <img src="https://bulma.io/images/placeholders/640x480.png">
+            </figure>
+          </div>
+          <div class="column">
+            <p class="title">Did I find the right website?</p>
+
+            <p id="site-name-check" class="subtitle">http://culturecreates.com</p>
+            <button id="site-check-ok" onclick="scrapeSite(compose_scraper_url(document.getElementById('site-name-check').innerText))" class="button is-large is-info">Yes</button>
+            <button id="site-check-ok" onclick="alert('Please enter the URL and try again.')" class="button is-large is-info">No</button>
+          </div>
+
+        </div>
+      </article>
+    </div>
+
+  </section>
+
+  <section class="section chat-card">
+    <div id="quote-bot-1"  class="container">
+      <article  class="message is-link fade-in">
+        <div class="message-header">
+          <p>
+            Food for thought
+          </p>
+          <button class="delete" aria-label="delete"></button>
+        </div>
+        <div class="message-body media">
+
+          <figure class="media-left">
+            <span class="icon is-large has-text-info">
+            <i class="fas fa-3x fa-info-circle"></i>
+          </span>
+          </figure>
+          <div class="media-content">
+            <div class="content">
+              <p>
+                Did you know that on average 75% of visitors to websites in the arts are bots and not humans beings!
+              </p>
+            </div>
+          </div>
+            <!--
+            <p>Gartner predicts in 2020 that 50% of searches will be initated by voice.
+            </p>
+            <p>Gartner predicts in 2020 that 75% of interactions will be driver by bots.
+            </p>
+            <p>Web sites with less traffic can have on average 90% of visitors that are bots.
+            </p> -->
+
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section chat-card" >
+    <div id="rate-site-card" class="container">
+      <div class="tile is-ancestor">
+        <div class="tile is-vertical is-8">
+          <div class="tile">
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child notification is-primary">
+                <p class="title">Scan Completed</p>
+                <p class="subtitle">Footlight has rated the find-ability of events.</p>
+              </article>
+              <article class="tile is-child notification is-danger">
+                <p class="title">Summary</p>
+                <p class="subtitle">Find-ability is NOT great :-(</p>
+                <p><div class="tags has-addons">
+                  <span class="tag is-dark">Total score</span>
+                  <span class="tag">10</span>
+                </div>
+              </p>
+                <p>This website was optimized for human eyeballs - and not for bots!</p>
+
+
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child notification is-info">
+                <p class="title">Web Site </p>
+                <p class="subtitle">This is the website Footlight scanned.</p>
+                <p>
+                  <figure class="image is-4by3">
+                    <img src="https://bulma.io/images/placeholders/640x480.png">
+                  </figure>
+                </p>
+                <p class="has-text-weight-bold" id="rate-site-title">Site Title</p>
+                <p  id="rate-site-description">Site description.</p>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-info">
+              <p class="title">Footlight found x events</p>
+              <p class="subtitle">These events can have their find-ability improved. Footlight found them but most bots will not. Using Footlight technology you can radically improve your find-ability score so all bots and virtual assistants understand your events (and not just me :-).</p>
+              <div class="content">
+                <div class="field has-addons">
+                  <div class="control is-expanded">
+                    <input  class="input is-large" id="user-email" type="text" placeholder="your email" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+                  </div>
+                  <div class="control">
+                    <button id="email-enter" class="button is-link is-large" type="button">Signup</button>
+                  </div>
+                </div>
+                <p class="title">Would you like to check a couple events?</p>
+                <button onclick="displayEvents()" class="button is-large ">Yes</button>
+                <button class="button is-large ">No</button>
+
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="tile is-parent">
+          <article class="tile is-child notification is-warning">
+              <p class="title">Score Card</p>
+
+              <p class="subtitle">Footlight checks for signs of linked and structured data.</p>
+                <div class="tile">
+                  <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box has-text-centered">
+                      <p class="image is-24by24" >
+                        <img class= "rating-icon" src="images/json-ld-logo.png" alt="" >
+                      </p>
+                      <p class="heading">JSON-LD</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/schema-org-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">Schema</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">10</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/open-graph-logo.png" alt="">
+                      </figure>
+                      <p class="heading">Facebook</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/google-assistant.png" alt="" >
+                      </figure>
+                      <p class="heading">Google</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="tile is-parent is-vertical">
+                    <div class="tile is-child  box has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/isni-icon-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">ISNI</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/thomson-reuters-logo.png" alt="" >
+                      </figure>
+                      <p class="heading">PermID</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/geonames-icon-logo.png" alt="">
+                      </figure>
+                      <p class="heading">GeoNames</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                    <div class="tile is-child box  has-text-centered">
+                      <figure class="image is-24by24">
+                        <img class= "rating-icon" src="images/wd-logo.jpg" alt="" >
+                      </figure>
+                      <p class="heading">Wikidata</p>
+                      <div class="tags has-addons">
+                        <span class="tag is-light">score</span>
+                        <span class="tag is-danger">0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section  class="section chat-card" >
+    <div id="event-extraction-card" class="container">
+      <article class="notification is-info is-size-5 fade-in">
+        <p>
+        Footlight extracted <span class="is-size-1" id="extraction-text"> </span> Events.
+      </p>
+      </article>
+    </div>
+  </section>
+
+  <section  class="section chat-card" >
+    <div id="event-card" class="container">
+      <article class="fade-in">
+        <div class="columns">
+          <div class="column">
+            <div  class="notification fade-in">
+              <div class="columns">
+                <div class="column">
+                  <figure class="image is-4by3">
+                    <img id="event-thumbnail" src="https://bulma.io/images/placeholders/640x480.png">
+                  </figure>
+                </div>
+                <div class="column">
+                  <p id="event-name" class="title">Event</p>
+                  <p id="event-location" class="subtitle">Location</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="notification is-danger">
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <script  src="js/cards.js"></script>
+  <script  src="js/utils.js"></script>
+  <script  src="js/analyze.js"></script>
+  <script  src="js/project.js"></script>
+
+  <script  src="js/scrape.js"></script>
+  <script  src="js/facebook.js"></script>
+  <script  src="js/utils.js"></script>
+ </body>
+
+ </html>

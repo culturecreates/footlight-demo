@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/graph.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="js/d3sparql.js"></script>
+    <script src="js/graph.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.0/js/all.js"></script>
+  </head>
+  <body>
+    <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <div class="navbar-item">
+          <img src="images/footlight-logo.png">
+        </div>
+        <button class="button navbar-burger"  data-target="navMenu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <div class="navbar-menu">
+        <div class="navbar-start">
+          <!-- navbar items -->
+          <a class="navbar-item" href="index.html">
+            Home
+          </a>
+          <a class="navbar-item" href="scan.html">
+            Scan your site
+          </a>
+          <a class="navbar-item" href="graph.html">
+            Knowledge Graph
+          </a>
+        </div>
+        <div class="navbar-end">
+          <!-- navbar items -->
+        </div>
+      </div>
+    </nav>
+    <section class="section">
+      <div class="container">
+        <form class="form">
+          <div class="has-text-centered">
+          <div class="field is-grouped is-grouped-centered is-grouped-multiline is-horizontal  ">
+            <div class="control has-icons-left">
+              <div class="select is-medium">
+                <select>
+                  <option selected>Canada</option>
+                  <option>Quebec</option>
+                  <option>Ontario</option>
+                  <option>Alberta</option>
+                  <option>British Columbia</option>
+                </select>
+              </div>
+              <span class="icon is-medium is-left">
+                <i class="fas fa-globe"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left">
+              <div class="select is-medium">
+                <select>
+                  <option selected>2017/2018</option>
+                  <option>Next 6 Months</option>
+                  <option>Next 30 days</option>
+                </select>
+              </div>
+              <span class="icon is-medium is-left">
+                <i class="far fa-calendar-alt"></i>
+              </span>
+            </div>
+            <div class="control has-icons-left">
+              <div class="select is-medium">
+                <select>
+                  <option selected>Dendrogram</option>
+                  <option>Sun Burst</option>
+                </select>
+              </div>
+              <span class="icon is-medium is-left">
+                <i class="fas fa-image"></i>
+              </span>
+            </div>
+            <p class="control">
+              <a id="search_button" class="button is-medium is-info">
+                Query
+              </a>
+            </p>
+
+          </div>
+          </div>
+
+        </form>
+        <div class="has-text-centered" id="result">
+        </div>
+        <p class="control">
+          <a onclick="toggleQueryDisplay()">
+            <p class="has-text-centered">
+              <span class="icon is-medium">
+                SPARQL
+                <i class="fas fa-info-circle"></i>
+              </span>
+            </p>
+          </a>
+        </p>
+        <div id="query_field">
+          <div  class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Endpoint</label>
+            </div>
+            <div class="field-body">
+              <div class="field has-addons">
+                <p class="control is-expanded">
+                  <input id="endpoint" class="input" type="text" value="https://rdf.ontotext.com/4045483734/cultureCreates/repositories/events">
+                </p>
+              </div>
+            </div>
+          </div>
+          <div  class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">SPARQL</label>
+            </div>
+            <div class="field-body">
+              <textarea  class="textarea" id="sparql" rows=15>
+PREFIX schema: <http://schema.org/>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+select ?root_name ?parent_name ?child_name where {
+  {
+ VALUES ?root_name { "Montreal" }
+      ?place a schema:Place .
+      ?place schema:name ?child_name .
+      ?place schema:city ?parent_name .
+  }  UNION  {
+       VALUES ?root_name { "Montreal" }
+      ?event a schema:Event .
+      ?event schema:name ?child_name .
+      ?event schema:location ?location .
+      ?location schema:name ?parent_name .
+      ?event schema:endDate ?time .
+     FILTER(xsd:integer(?time) > 1519313163)
+  }
+}
+
+              </textarea>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="newsletter" class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns is-vcentered">
+            <div class="column is-one-half is-left">
+              <p class="title">Culture Creates <strong>Newsletter</strong></p>
+              <p class="subtitle">Get notified when v1 is ready!</p>
+            </div>
+            <div class="column">
+
+              <div class="field is-grouped">
+                <div class="control has-icons-left is-expanded">
+                  <input id="user_email" type="email" value="" name="email" class="input is-flat required email" placeholder="email address" required="">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                  </span>
+                </div>
+                <div class="control">
+                  <input value="Subscribe" onclick="subscribeNewsletter();" class="button is-white is-outlined">
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
