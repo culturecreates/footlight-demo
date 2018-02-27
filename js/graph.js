@@ -11,12 +11,15 @@ const default_query =
 'PREFIX schema: <http://schema.org/> \n\
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n\
 \n\
-SELECT ?root_name ?parent_name ?child_name where { \n\
+SELECT DISTINCT ?root_name ?parent_name ?child_name where { \n\
   { \n\
       VALUES ?root_name { "Montreal" } \n\
       ?location a schema:Place . \n\
       ?location schema:name ?child_name . \n\
       ?location schema:city ?parent_name . \n\
+      ?event schema:location ?location . \n\
+      ?event schema:endDate ?endDate . \n\
+      ?event schema:startDate ?startDate . \n\
   }  UNION  { \n\
        VALUES ?root_name { "Montreal" } \n\
       ?event a schema:Event . \n\
@@ -76,7 +79,7 @@ function new_exec() {
     alert('error in selected timespan', selected_time_span)
   }
   // slice last to curly braces and add filters
-  new_query = default_query.slice(0,-2) + "FILTER(xsd:integer(?endDate) >= " + start_time_window + " && xsd:integer(?startDate) <= " + end_time_window + ") \n }}"
+  new_query = default_query.slice(0,-1) + "FILTER(xsd:integer(?endDate) >= " + start_time_window + " && xsd:integer(?startDate) <= " + end_time_window + ") \n }"
   sparql_field.innerHTML = new_query
   exec()
 }

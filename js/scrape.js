@@ -18,7 +18,7 @@ function scrapeSite(url) {
         addCard('rate-site-card',jsonResp);
 
         fbid = jsonResp.data.my_facebook_id;
-        if (fbid != "") {
+        if (fbid != "" && fbid != null ) {
           loadFacebookEvents(jsonResp.data.my_facebook_id);
         } else {
           addCard('message-card',["I can't find this site's Facebook page. I'll have to improve my algorithm :-("]);
