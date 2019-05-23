@@ -13,21 +13,25 @@ PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> \n\
 \n\
 SELECT DISTINCT ?root_name ?parent_name ?child_name where { \n\
   { \n\
-      VALUES ?root_name { "Montreal" } \n\
+      VALUES ?root_name { "CA" } \n\
       ?location a schema:Place . \n\
-      ?location schema:name ?child_name . \n\
-      ?location schema:city ?parent_name . \n\
+      ?location schema:name ?child_name_lang . \n\
+      ?location schema:address/schema:addressCountry ?parent_name_raw . \n\
       ?event schema:location ?location . \n\
       ?event schema:endDate ?endDate . \n\
       ?event schema:startDate ?startDate . \n\
+      bind( str(?child_name_lang ) as ?child_name) \n\
+      bind (replace(?parent_name_raw, "Canada","CA","i") as ?parent_name) \n\
   }  UNION  { \n\
-       VALUES ?root_name { "Montreal" } \n\
+       VALUES ?root_name { "CA" } \n\
       ?event a schema:Event . \n\
-      ?event schema:name ?child_name . \n\
+      ?event schema:name ?child_name_lang . \n\
       ?event schema:location ?location . \n\
-      ?location schema:name ?parent_name . \n\
+      ?location schema:name ?parent_name_lang . \n\
       ?event schema:endDate ?endDate . \n\
       ?event schema:startDate ?startDate . \n\
+      bind( str(?child_name_lang) as ?child_name)  \n\
+      bind( str(?parent_name_lang) as ?parent_name)  \n\
   }}'
 
 
@@ -48,38 +52,25 @@ function new_exec() {
   let end_time_window
   let new_query
   let selected_time_span = time_span.options[time_span.selectedIndex].value
-  if (selected_time_span == "all") {
-    start_time_window = 1400000000
-    end_time_window = 1600000000
+
+  start_time_window = today_date.toISOString()
+  if (selected_time_span == "current_year") {
+    start_time_window = today_date.getFullYear(); + "-01-01"
+    end_time_window = today_date.getFullYear()+1; + "-01-01"
+  } else if (selected_time_span == "all") {
+    start_time_window = "2000-01-01"
+    end_time_window = "2050-01-01"
   } else if (selected_time_span == "3m") {
-    start_time_window = parseInt(today_date.getTime() / 1000)
-    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 3)).getTime() / 1000)
+    end_time_window = new Date(today_date.setMonth(today_date.getMonth()+3)).toISOString()
   } else if (selected_time_span == "2m") {
-    start_time_window = parseInt(today_date.getTime() / 1000)
-    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 2)).getTime() / 1000)
+     end_time_window = new Date(today_date.setMonth(today_date.getMonth()+2)).toISOString()
   } else if (selected_time_span == "1m") {
-    start_time_window = parseInt(today_date.getTime() / 1000)
-    end_time_window = parseInt(new Date(today_date.setMonth(today_date.getMonth() + 1)).getTime() / 1000)
-  } else if (selected_time_span == "JAN") {
-    start_time_window = parseInt(new Date("1-JAN-2018").getTime() / 1000)
-    end_time_window = parseInt(new Date("1-FEB-2018").getTime() / 1000)
-  } else if (selected_time_span == "FEB") {
-    start_time_window = parseInt(new Date("1-FEB-2018").getTime() / 1000)
-    end_time_window = parseInt(new Date("1-MAR-2018").getTime() / 1000)
-  } else if (selected_time_span == "MAR") {
-    start_time_window = parseInt(new Date("1-MAR-2018").getTime() / 1000)
-    end_time_window = parseInt(new Date("1-APR-2018").getTime() / 1000)
-  } else if (selected_time_span == "APR") {
-    start_time_window = parseInt(new Date("1-APR-2018").getTime() / 1000)
-    end_time_window = parseInt(new Date("1-MAY-2018").getTime() / 1000)
-  } else if (selected_time_span == "MAY") {
-    start_time_window = parseInt(new Date("1-MAY-2018").getTime() / 1000)
-    end_time_window = parseInt(new Date("1-JUN-2018").getTime() / 1000)
+    end_time_window = new Date(today_date.setMonth(today_date.getMonth()+1)).toISOString()
   } else {
     alert('error in selected timespan', selected_time_span)
   }
   // slice last to curly braces and add filters
-  new_query = default_query.slice(0,-1) + "FILTER(xsd:integer(?endDate) >= " + start_time_window + " && xsd:integer(?startDate) <= " + end_time_window + ") \n }"
+  new_query = `${default_query.slice(0,-1)} FILTER ( ?startDate > "${start_time_window}"^^xsd:dateTime  && ?startDate < "${end_time_window}"^^xsd:dateTime) \n }`
   sparql_field.innerHTML = new_query
   exec()
 }
