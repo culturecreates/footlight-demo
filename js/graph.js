@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
   search_button.addEventListener('click',new_exec);
   search_button_custom.addEventListener('click',exec);
   query_field.style.display = "none"
-  mew_exec()
+  new_exec()
 
 })
 
