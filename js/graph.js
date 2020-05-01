@@ -22,6 +22,7 @@ SELECT DISTINCT ?root_name ?parent_name ?child_name where { \n\
       ?event schema:startDate ?startDate . \n\
       bind( str(?child_name_lang ) as ?child_name) \n\
       bind (replace(?parent_name_raw, "Canada","CA","i") as ?parent_name) \n\
+      FILTER ( lang(?child_name_lang) = "") \n\
   }  UNION  { \n\
        VALUES ?root_name { "CA" } \n\
       ?event a schema:Event . \n\
