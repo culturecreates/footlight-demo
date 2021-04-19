@@ -18,7 +18,6 @@ SELECT DISTINCT ?root_name ?parent_name ?child_name where { \n\
       ?location schema:name ?child_name_lang . \n\
       ?location schema:address/schema:addressCountry ?parent_name_raw . \n\
       ?event schema:location ?location . \n\
-      ?event schema:endDate ?endDate . \n\
       ?event schema:startDate ?startDate . \n\
       bind( str(?child_name_lang ) as ?child_name) \n\
       bind (replace(?parent_name_raw, "Canada","CA","i") as ?parent_name) \n\
@@ -29,7 +28,6 @@ SELECT DISTINCT ?root_name ?parent_name ?child_name where { \n\
       ?event schema:name ?child_name_lang . \n\
       ?event schema:location ?location . \n\
       ?location schema:name ?parent_name_lang . \n\
-      ?event schema:endDate ?endDate . \n\
       ?event schema:startDate ?startDate . \n\
       bind( str(?child_name_lang) as ?child_name)  \n\
       bind( str(?parent_name_lang) as ?parent_name)  \n\
